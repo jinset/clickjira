@@ -14,6 +14,10 @@ export class JiraComponent implements OnInit {
   constructor(private jiraService: JiraService) { }
 
   ngOnInit(): void {
+ 
+  }
+
+  onCall() {
     this.text = "The app is loading..."
     this.jiraService.getAccess().subscribe(
       data => { this.text = "The app loads correctly", console.log(data) },
