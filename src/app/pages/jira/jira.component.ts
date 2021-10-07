@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { JiraService } from '../../services/jira.service';
+import { ProjectService } from '../../services/project.service';
+
 
 @Component({
   selector: 'app-jira',
@@ -7,23 +8,21 @@ import { JiraService } from '../../services/jira.service';
   styleUrls: ['./jira.component.scss']
 })
 export class JiraComponent implements OnInit {
-  text: string;
-  errorLink: string;
-  jiraHTML: any;
-
-  constructor(private jiraService: JiraService) { }
+  projects: any;
+  loading = false;
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit(): void {
- 
+    this.getAllProjects();
+    this.loading = true;
   }
 
-  onCall() {
-    this.text = "The app is loading..."
-    this.jiraService.getAccess().subscribe(
-      data => { this.text = "The app loads correctly", console.log(data) },
-      error => {
-        this.text = `error check`, this.errorLink = error.url, console.log(error)
-      });
+  getAllProjects() {
+    this.projectService.getAllProjects().subscribe(projects => {
+      console.log(projects.body[1]);
+      this.projects = projects.body;
+    });
+
   }
 
 }

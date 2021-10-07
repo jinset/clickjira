@@ -1,7 +1,14 @@
-<div [innerHTML]="jiraHTML"></div>
+<div *ngIf="loading">
+    <ng-container *ngFor="let project of projects">
+        <mat-card class="example-card">
+            <mat-card-title-group>
+                <mat-card-title>{{project.name}}</mat-card-title>
+                <mat-card-subtitle>Key: {{project.key}}</mat-card-subtitle>
+                <img mat-card-sm-image src="{{project.avatarUrls['24x24']}}">
+            </mat-card-title-group>
+            <mat-card-content>
 
-<div> <span>{{text}}</span> <a [href]="errorLink">link</a>  </div>
-
-
-
-<button (click)="onCall()"> My btn test </button>
+            </mat-card-content>
+        </mat-card>
+    </ng-container>
+</div>

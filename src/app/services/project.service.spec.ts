@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { JiraService } from './jira.service';
+import { ProjectService } from './project.service';
 
-describe('JiraService', () => {
-  let service: JiraService;
+describe('ProjectService', () => {
+  let service: ProjectService;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(JiraService);
+    service = TestBed.inject(ProjectService);
   });
 
   it('should be created', () => {
